@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.study.mapper.UserMapper">
+    <select id="getUsers" resultType="user">
+        SELECT u.id AS id, u.name AS name,password,d.name AS department, create_time
+        FROM t_user u ,t_department d
+        WHERE u.department=d.id
+    </select>
+</mapper>
