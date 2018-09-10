@@ -13,6 +13,19 @@ public interface UserService {
      * 获取所有的用户
      * @return list
      */
-    List<User> getUsers();
+    List<User> getUsers(int page,int pageSize);
 
+    /**
+     * login check
+     * @param name username
+     * @return User
+     */
+    User loginCheck(String name);
+
+    /**
+     * 查询用户拥有的权限
+     * @param user 个体
+     * @return list 权限集合
+     */
+    List<String> getAllPrivilege(User user);
 }
