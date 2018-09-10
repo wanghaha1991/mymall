@@ -14,4 +14,18 @@ public interface UserMapper {
      * @return list
      */
     List<User> getUsers();
+
+    /**
+     * get user by name
+     * @param name username
+     * @return user
+     */
+    User getUserByName(String name);
+
+    /**
+     * get privilege by user
+     * @param user 个体
+     * @return 权限集合
+     */
+    List<String> getPrivilegeByUser(User user);
 }

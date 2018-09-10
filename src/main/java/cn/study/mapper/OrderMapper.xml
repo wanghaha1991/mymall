@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.study.mapper.OrderMapper">
+    <resultMap id="orderMap" type="Order">
+        <id property="id" column="id"/>
+        <result property="number" column="number"/>
+        <result property="total" column="total"/>
+        <result property="createTime" column="create_time"/>
+        <result property="orderStatus" column="order_status"/>
+        <result property="payMode" column="pay_mode"/>
+        <result property="payStatus" column="pay_status"/>
+        <result property="cargoStatus" column="cargo_status"/>
+        <result property="express" column="express"/>
+        <collection property="account" javaType="Account">
+            <id property="id" column="a_id"/>
+            <result property="username" column="username"/>
+            <result property="phone" column="phone"/>
+        </collection>
+        <collection property="good" javaType="cn.study.pojo.Good">
+            <id property="id" column="g_id"/>
+            <result property="name" column="g_name"/>
+            <result property="price" column="price"/>
+        </collection>
+    </resultMap>
+    <select id="getOrders" resultMap="orderMap">
+      SELECT o.id AS id,o.number,o.total,o.create_time,order_status,pay_mode,pay_status,cargo_status,express,
+      a.id AS a_id,a.username,a.phone,
+      g.id AS g_id,g.name AS g_name,g.price
+      FROM t_account a, t_order o,t_goods g
+      WHERE a.id=o.account_id
+      AND  o.good_id=g.id
+    </select>
+</mapper>

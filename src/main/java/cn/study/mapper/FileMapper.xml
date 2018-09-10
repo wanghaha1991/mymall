@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.study.mapper.FileMapper">
+    <insert id="addImgLocation">
+       INSERT INTO t_goods_img(img,goods_id)
+       VALUES(#{img},#{id})
+    </insert>
+    <select id="getImages" resultType="Image">
+        SELECT m.id AS id,m.goods_id AS goodId,img,g.name AS goodName
+        FROM t_goods g,t_goods_img m
+        WHERE g.id=m.goods_id
+    </select>
+    <delete id="deleteImage" parameterType="int">
+        DELETE FROM t_goods_img
+        WHERE id=#{id}
+    </delete>
+    <select id="getUrlById" parameterType="int" resultType="string">
+        SELECT img
+        FROM t_goods_img
+        WHERE id=#{id}
+    </select>
+</mapper>

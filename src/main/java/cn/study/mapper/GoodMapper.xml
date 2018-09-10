@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.study.mapper.GoodMapper">
+    <select id="getAllGoods" resultType="Good">
+      SELECT d.id,d.name,price,g.name AS 'group',inventory,good_desc AS description,is_sale AS isSale
+      FROM t_goods AS d,t_group AS g
+      WHERE d.group_id = g.id
+    </select>
+    <select id="queryGoodById" parameterType="int" resultType="Good">
+      SELECT d.id,d.name,price,g.name AS 'group',inventory,good_desc AS description,is_sale AS isSale
+      FROM t_goods AS d,t_group AS g
+      WHERE d.group_id = g.id
+      AND d.id=#{id}
+    </select>
+    <select id="queryAllGroups" resultType="Classify">
+        SELECT id,name,group_desc as description
+        FROM t_group
+    </select>
+    <update id="updateGood" parameterType="Good">
+        UPDATE t_goods
+        SET name=#{name},price=#{price},group_id=(select id from t_group where name=#{group}),
+        inventory=#{inventory},good_desc=#{description}
+        WHERE id=#{id}
+    </update>
+    <delete id="deleteGood" parameterType="int">
+        DELETE FROM t_goods
+        WHERE id=#{id}
+    </delete>
+    <insert id="addGood" parameterType="Good">
+        insert into t_goods (name, price, group_id, inventory, good_desc, is_sale)
+        values (#{name},#{price},(select id from t_group where name=#{group}),#{inventory},#{description},#{isSale});
+    </insert>
+    <select id="getAllGoodsBySale" resultType="Good">
+      SELECT d.id,d.name,price,g.name AS 'group',inventory,good_desc AS description,is_sale AS isSale
+      FROM t_goods AS d,t_group AS g
+      WHERE d.group_id = g.id
+      AND d.is_sale=#{isSale}
+    </select>
+    <update id="updateSale">
+        UPDATE t_goods
+        SET is_sale=#{sale}
+        WHERE id=#{id}
+    </update>
+</mapper>
