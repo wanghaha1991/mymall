@@ -7,6 +7,7 @@ import java.io.Serializable;
  * @date 2018/9/1 10:50
  */
 public class Role implements Serializable {
+    private static final long serialVersionUID = -1308082899133113401L;
     private Integer id;
     private String name;
     private String desc;

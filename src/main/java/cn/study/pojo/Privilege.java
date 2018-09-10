@@ -7,6 +7,8 @@ import java.io.Serializable;
  * @date 2018/9/1 11:08
  */
 public class Privilege implements Serializable {
+
+    private static final long serialVersionUID = 5242919280249794546L;
     private Integer id;
     private String name;
 

@@ -7,6 +7,8 @@ import java.io.Serializable;
  * @date 2018/9/1 11:02
  */
 public class Menu implements Serializable {
+
+    private static final long serialVersionUID = 6994183965300258995L;
     private Integer id;
     private String name;
 

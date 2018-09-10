@@ -1,18 +1,19 @@
 package cn.study.pojo;
 
-import javax.xml.crypto.Data;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author asus
  * @date 2018/9/1 10:47
  */
 public class User implements Serializable {
+    private static final long serialVersionUID = -5199517934372745396L;
     private Integer id;
     private String name;
     private String password;
     private String department;
-    private Data createTime;
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -46,11 +47,11 @@ public class User implements Serializable {
         this.department = department;
     }
 
-    public Data getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Data createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }
