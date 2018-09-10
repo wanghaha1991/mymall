@@ -5,7 +5,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<properties resource="mysql-config.properties"/>
 	<typeAliases>
-		<!--<typeAlias type="po.User" alias="user"/>-->
 		<package name="cn.study.pojo"/>
 	</typeAliases>
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!--数据库源-->
+			<property name="helperDialect" value="mysql"/>
+			<!--合理化分页-->
+			<property name="reasonable" value="true"/>
+		</plugin>
+	</plugins>
 </configuration>
