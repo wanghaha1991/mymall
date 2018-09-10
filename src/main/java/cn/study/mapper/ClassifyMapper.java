@@ -47,4 +47,10 @@ public interface ClassifyMapper {
      * @param classify instance
      */
     void addClassify(Classify classify);
+
+    /**
+     * 删除
+     * @param id id
+     */
+    void del(int id);
 }
