@@ -45,4 +45,9 @@ public class ClassifyServiceImpl implements ClassifyService {
     public void addClassify(Classify classify) {
         classifyMapper.addClassify(classify);
     }
+
+    @Override
+    public void delClassify(int id) {
+        classifyMapper.del(id);
+    }
 }

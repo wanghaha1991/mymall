@@ -28,4 +28,8 @@
     <insert id="addClassify" parameterType="Classify">
         insert into t_group (name, group_desc, parent_id) values (#{name},#{description},#{parentId});
     </insert>
+    <delete id="del" parameterType="int">
+        DELETE FROM t_group
+        WHERE id=#{id}
+    </delete>
 </mapper>

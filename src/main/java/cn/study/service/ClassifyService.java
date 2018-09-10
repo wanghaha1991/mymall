@@ -49,4 +49,10 @@ public interface ClassifyService {
      * @param classify 对象
      */
     void addClassify(Classify classify);
+
+    /**
+     * 删除
+     * @param id classify id
+     */
+    void delClassify(int id);
 }
